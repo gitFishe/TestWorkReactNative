@@ -8,6 +8,9 @@ import {createUser} from "@/lib/appFunctions";
 import {router} from "expo-router";
 import CustomButton from "@/components/CustomButton";
 
+import ArrowBack from "@/assets/images/arrow-back.svg";
+import UserLogin from "@/assets/images/user-login.svg";
+
 
 export default function signin () {
 
@@ -45,14 +48,11 @@ export default function signin () {
     return (
         <CustomBackground>
             <Container>
-                <View className='mt-auto'>
-
-                    <TouchableOpacity className='h-5 w-5 bg-pink mb-auto' onPress={() => router.back()}>
-
+                <View className='flex flex-col h-full'>
+                    <TouchableOpacity className='h-5 w-5 mb-auto' onPress={() => router.back()}>
+                        <ArrowBack width={24} height={24}/>
                     </TouchableOpacity>
-
-                    <View className='w-5 h-5 bg-pink mb-[72px] ml-auto mr-10'></View>
-
+                    <UserLogin width={100} height={100} className='ml-auto mr-5 mb-[72px]'/>
                     <View className='mb-6'>
                         <Text className='text-lg text-white text-center'>LOGIN</Text>
                         <Text className='text-lightGray mt-2 text-[11px] text-center'>Enter your login password from your account</Text>
@@ -69,7 +69,6 @@ export default function signin () {
                     <TouchableOpacity activeOpacity={0.9}>
                         <Text style={styles.boxShadow} className='text-right mb-4'>Forgot password</Text>
                     </TouchableOpacity>
-
                     <CustomButton title='login' handlePress={submitForm} isLoading={isSubmitting}/>
 
                     <View className='flex flex-row mt-24 mx-auto'>

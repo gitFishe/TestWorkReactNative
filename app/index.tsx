@@ -5,11 +5,15 @@ import {Container} from "@/components/Container";
 import {router} from "expo-router";
 import CustomBackground from "@/components/CustomBackground";
 
+// @ts-ignore
+import Logo from '../assets/images/logo.svg';
+
+
 export default function Index() {
     return (
         <CustomBackground>
             <Container>
-                <View className='w-[200px] m-auto h-[200px] bg-blue-500'/>
+                <Logo width={104} height={111} className='m-auto'/>
                 <View className='mt-auto'>
                     <CustomButton title='Login' handlePress={() => {router.navigate('/(auth)/sign-in')}}/>
                     <CustomButton title='Register' containerColor='secondary' containerStyle='mt-4' handlePress={() => {router.navigate('/(auth)/sign-up')}}/>

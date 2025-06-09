@@ -8,6 +8,8 @@ import {createUser} from "@/lib/appFunctions";
 import {router} from "expo-router";
 import CustomButton from "@/components/CustomButton";
 
+import ArrowBack from "@/assets/images/arrow-back.svg";
+import UserLogin from "@/assets/images/user-login.svg";
 
 export default function signin () {
 
@@ -45,10 +47,11 @@ export default function signin () {
     return (
         <CustomBackground>
             <Container>
-                <View className='mt-auto'>
-
-                    <View className='w-5 h-5 bg-pink mb-[72px] ml-auto mr-10'></View>
-
+                <View className='flex flex-col h-full'>
+                    <TouchableOpacity className='h-5 w-5 mb-auto' onPress={() => router.back()}>
+                        <ArrowBack width={24} height={24}/>
+                    </TouchableOpacity>
+                    <UserLogin width={100} height={100} className='ml-auto mr-5 mb-[72px]'/>
                     <View className='mb-6'>
                         <Text className='text-lg text-white text-center'>SIGN UP</Text>
                         <Text className='text-lightGray mt-2 text-[11px] text-center'>Create your email and password for your account</Text>
@@ -62,7 +65,6 @@ export default function signin () {
                         title='Password'
                         handleChangeText={(e) => setForm({...form, password: e})}
                     />
-
                     <CustomButton title='Sign Up' handlePress={submitForm} isLoading={isSubmitting}/>
 
                     <View className='flex flex-row mt-24 mx-auto'>
