@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {Container} from "@/components/Container";
 import CustomBackground from "@/components/CustomBackground";
 import InputField from "@/components/InputField";
@@ -7,6 +7,8 @@ import { StyleSheet } from 'react-native';
 import {createUser} from "@/lib/appFunctions";
 import {router} from "expo-router";
 import CustomButton from "@/components/CustomButton";
+import {useAuth} from "@/lib/GlobalProvider";
+
 
 import ArrowBack from "@/assets/images/arrow-back.svg";
 import UserLogin from "@/assets/images/user-login.svg";
@@ -19,7 +21,7 @@ export default function signin () {
     })
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-
+    const {user, setUser } = useAuth();
     const submitForm = async () => {
 
         if (!form.email || !form.password) {
@@ -43,6 +45,13 @@ export default function signin () {
 
 
     }
+
+
+    useEffect(() => {
+        if (user) {
+            router.replace('/home');
+        }
+    }, [user]);
 
     return (
         <CustomBackground>
